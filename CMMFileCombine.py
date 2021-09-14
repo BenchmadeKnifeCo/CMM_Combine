@@ -3,6 +3,7 @@ These are character files from Zeiss Calypso which are exported to a file system
 """Written by Ryan Johnson 2019"""
 
 import pandas as pd
+import re
 from tkinter import *
 from tkinter import filedialog, messagebox
 from tkinter import ttk
@@ -81,7 +82,8 @@ def choose_dir():
 def newrow(dataframe):
     global mydict
     mydict = {}
-    mydict.update({'planid': df.planid[0], 'part_num': df.partnb[0]})
+    part=re.sub('\D','',df.partnb[0])
+    mydict.update({'planid': df.planid[0], 'part_num': part})
 
     if check1.get() == 1:
 
